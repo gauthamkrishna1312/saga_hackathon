@@ -8,7 +8,7 @@ class Hospital(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     beds = models.IntegerField()
     rooms = models.IntegerField()
-    description = models.CharField()
+    description = models.TextField()
 
     def __str__(self):
         return f"{self.user.username}"
@@ -54,7 +54,6 @@ class DoctorHospitals(models.Model):
 
 
 class Appointment(models.Model):
-    hospital = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
