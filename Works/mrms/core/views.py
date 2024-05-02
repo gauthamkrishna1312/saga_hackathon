@@ -16,3 +16,8 @@ class IndexView(generic.TemplateView):
         return context
     
 
+class AppointmentView(View):
+    
+    def post(self, request, *args, **kwargs):
+        doctor = request.POST.get('doctor')
+        appointment = models.Appointment(doctor=doctor, customer=)
