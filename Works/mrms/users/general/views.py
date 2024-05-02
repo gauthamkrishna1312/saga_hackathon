@@ -84,7 +84,7 @@ class RedirectUserView(base_views.RedirectUserView):
 class CreateCustomerView(LoginRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
-        user = get_object_or_404(get_user_model(), username=kwargs.get("username"))
+        user = get_object_or_404(get_user_model(), id=kwargs.get("id"))
         if not models.Customer.objects.filter(user=user).exists():
             customer = models.Customer(user=user)
             customer.save()
@@ -132,4 +132,4 @@ class AddToCustomerGroup(base_views.AddToGroup):
     group_name = "customer"
 
     def get_success_url(self):
-        return reverse_lazy("users:create-customer", kwargs={"username": self.request.user.username})
+        return reverse_lazy("users:create-customer", kwargs={"id": self.request.session.pop("user_id")})

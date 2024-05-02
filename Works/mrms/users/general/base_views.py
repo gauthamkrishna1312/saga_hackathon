@@ -116,7 +116,7 @@ class AddToGroup(View):
 
     def get(self, request, *args, **kwargs):
         group = self.get_group_model()
-        user_id = request.session.pop("user_id")
+        user_id = request.session.get("user_id")
         user = self.get_user_model(id=user_id)
         user.groups.add(group)
         return redirect(self.get_success_url())
