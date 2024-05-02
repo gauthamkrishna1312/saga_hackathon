@@ -6,7 +6,7 @@ import os
 
 class Hospital(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    beds = models.IntegerField()
+    beds = models.IntegerField() # wards
     rooms = models.IntegerField()
     description = models.TextField()
 

@@ -45,8 +45,12 @@ class HospitalProfileView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
+        hospital = get_object_or_404(Hospital, user__username=self.kwargs.get("username"))
+        doctors = models.Doctor.objects.filter(hospital=hospital)
         context.update({
-            "hospital": get_object_or_404(Hospital, user__username=self.kwargs.get("username"))
+            "hospital": hospital,
+            "doctors": doctors,
+            "no_of_doctors": doctors.count(),
         })
         return context
 
