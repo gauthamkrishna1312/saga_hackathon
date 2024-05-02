@@ -75,9 +75,9 @@ class RedirectUserView(base_views.RedirectUserView):
     """
     def get_role_and_url(self):
         return {
-            get_user_model().CUSTOMER: reverse_lazy("users:profile-customer"),
-            get_user_model().DOCTOR: reverse_lazy("users:profile-doctor"),
-            get_user_model().HOSPITAL: reverse_lazy("users:profile-hospital"),
+            get_user_model().CUSTOMER: reverse_lazy("users:profile-customer", kwargs={"username": self.request.user.username}),
+            get_user_model().DOCTOR: reverse_lazy("users:profile-doctor", kwargs={"username": self.request.user.username}),
+            get_user_model().HOSPITAL: reverse_lazy("users:profile-hospital", kwargs={"username": self.request.user.username}),
         }
 
 

@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from django.views import View
+from django.views import View, generic
 
 from . import models
 
 
-class IndexView(View):
-
-    def get(self, request, *args, **kwargs):
-        pass
+class IndexView(generic.TemplateView):
+    pass
