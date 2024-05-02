@@ -1,3 +1,11 @@
 Works/env
 Works/mrms/users/django_email/__pycache__/
-Works/mrms/__pycache__/
+Works/mrms/users/general/__pycache__/
+Works/mrms/users/migrations/
+Works/mrms/users/migrations/__pycache__/
+Works/mrms/users/django_mail/__pycache__/
+Works/mrms/users/change_password/__pycache__/
+Works/mrms/users/reset_password/__pycache__/
+Works/mrms/users/email_verification/__pycache__/
+Works/mrms/users/__pycache__/
+Works/mrms/mrms/__pycache__/
