@@ -6,7 +6,6 @@ from django.contrib.auth import views as auth_views, get_user_model
 
 from . import forms, base_views
 
-
 class ProfileView(LoginRequiredMixin, generic.TemplateView):
     """
     user profile page
@@ -68,7 +67,7 @@ class AddExampleRole(base_views.AddRole):
     """
     give users  the specified role
     """
-    role = get_user_model().EXAMPLE_ROLE
+    role = None
 
 
 class AddToExampleGroup(base_views.AddToGroup):
