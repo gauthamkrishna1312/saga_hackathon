@@ -55,7 +55,7 @@ class Customer(models.Model):
     bloog_group = models.CharField(max_length=10, null=True, blank=True)
     disbled = models.BooleanField(default=False, blank=True)
     disease = models.CharField(null=True, blank=True, max_length=100)
-    bio = models.TextField()
+    bio = models.TextField(null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.user.username}"

@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth import views as auth_views, get_user_model
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from . import forms, base_views
 from users import models
@@ -79,6 +79,16 @@ class RedirectUserView(base_views.RedirectUserView):
             get_user_model().DOCTOR: reverse_lazy("users:profile-doctor", kwargs={"username": self.request.user.username}),
             get_user_model().HOSPITAL: reverse_lazy("users:profile-hospital", kwargs={"username": self.request.user.username}),
         }
+    
+
+class CreateCustomerView(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        user = get_object_or_404(get_user_model(), username=kwargs.get("username"))
+        if not models.Customer.objects.filter(user=user).exists():
+            customer = models.Customer(user=user)
+            customer.save()
+        return redirect(reverse_lazy("users:login"))
 
 
 class LogoutView(auth_views.LogoutView):
@@ -120,4 +130,6 @@ class AddToCustomerGroup(base_views.AddToGroup):
     add users to the specified group
     """
     group_name = "customer"
-    success_url = reverse_lazy("users:login")
+
+    def get_success_url(self):
+        return reverse_lazy("users:create-customer", kwargs={"username": self.request.user.username})
