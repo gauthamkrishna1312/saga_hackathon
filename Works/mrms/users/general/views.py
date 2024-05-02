@@ -84,6 +84,7 @@ class RedirectUserView(base_views.RedirectUserView):
 class CreateCustomerView(View):
 
     def get(self, request, *args, **kwargs):
+        print(f"create customer {kwargs.get('id')}")
         user = get_object_or_404(get_user_model(), id=kwargs.get("id"))
         if not models.Customer.objects.filter(user=user).exists():
             print("Customer already exists")
