@@ -57,7 +57,7 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
-    time = models.DateTimeField()
+    time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.customer.user.username} | {self.doctor.user.username}"
