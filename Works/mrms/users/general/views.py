@@ -3,8 +3,10 @@ from django.core.exceptions import ImproperlyConfigured
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views as auth_views, get_user_model
+from django.shortcuts import get_object_or_404
 
 from . import forms, base_views
+from users import models
 
 class ProfileView(LoginRequiredMixin, generic.TemplateView):
     """
@@ -15,6 +17,7 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context.update({
+            "patience": get_object_or_404(models.Customer, user=self.request.user)
         })
         return context
 
