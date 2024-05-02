@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +144,4 @@ EMAIL_HOST_PASSWORD = "1234567890"
 EMAIL_USE_TLS = True
 
 OTP_LENGTH = 6
+OTP_EXPIRY = 30
