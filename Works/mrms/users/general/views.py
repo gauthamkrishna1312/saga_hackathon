@@ -45,6 +45,7 @@ class LogoutView(auth_views.LogoutView):
     redirect user to login page
     """
     next_page = "users:login"
+    http_method_names = ["GET", "get"]
 
 
 class RegisterView(generic.CreateView):
