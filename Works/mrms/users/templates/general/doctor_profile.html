@@ -35,11 +35,13 @@
                 </tr>
               </thead>
               <tbody>
+                {% for appointment in appointments %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td><a href="./view_patient_request.html">Patient Name</a></td>
-                  <td><a href="#" class="text-success ">Accept</a><a href="#" class="text-danger mx-2">Reject</a></td>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td><a href="{% url 'users:profile-customer' username=appointment.customer.user.username %}">{{ appointment.customer.user.username }} </a></td>
+                  <td><a href="{% url 'core:appointment-confirm' %}" class="text-success ">Accept</a><a href="{% url 'core:appointment-decline' %}" class="text-danger mx-2">Reject</a></td>
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
             <br>
@@ -65,34 +67,37 @@
 
               <div class="tab-pane fade show active profile-overview" id="profile-overview">
                 <h5 class="card-title">About</h5>
-                <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+                <p class="small fst-italic">{{ doctor.bio }}</p>
 
                 <h5 class="card-title">Profile Details</h5>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                  <div class="col-lg-9 col-md-8">{{ doctor.user.full_name }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Hospital</div>
-                  <div class="col-lg-9 col-md-8"><a href="./hospital_profile.html">Baby Memorial Hospital</a></div>
+                  {% for object in hospitals %}
+                
+                  <div class="col-lg-9 col-md-8"><a href="{% url 'users:profile-hospital' username=object.hospital.user.username %}">{{ object.hospital.user.username }}</a></div>
+                    {% endfor %}
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Specialization</div>
-                  <div class="col-lg-9 col-md-8">Web Designer</div>
+                  <div class="col-lg-9 col-md-8">{{ doctor.experties }}</div>
                 </div>
 
                 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  <div class="col-lg-9 col-md-8">{{ doctor.user.phone }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8">{{ doctor.user.email }}</div>
                 </div>
 
               </div>
