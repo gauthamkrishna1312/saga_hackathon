@@ -5,7 +5,9 @@ general_urlpatterns = [
     # redirect user based on authentication and authorisation
     path('', views.RedirectUserView.as_view(), name="redirect-user"),
     # profile page
-    path('profile/<username>/', views.ProfileView.as_view(), name='profile'),
+    path('profile/patient/<username>/', views.CustomerProfileView.as_view(), name='profile-customer'),
+    path('profile/doctor/<username>/', views.DoctorProfileView.as_view(), name='profile-doctor'),
+    path('hospital/<username>/', views.HospitalProfileView.as_view(), name='profile-doctor'),
 
     # user login
     path('login/', views.LoginView.as_view(), name='login'),

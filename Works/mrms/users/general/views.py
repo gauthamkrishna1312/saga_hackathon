@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from . import forms, base_views
 from users import models
 
-class ProfileView(LoginRequiredMixin, generic.TemplateView):
+class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
     """
     user profile page
     """
@@ -18,6 +18,19 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
         context =  super().get_context_data(**kwargs)
         context.update({
             "patience": get_object_or_404(models.Customer, user=self.request.user)
+        })
+        return context
+
+class DoctorProfileView(LoginRequiredMixin, generic.TemplateView):
+    """
+    user profile page
+    """
+    template_name = "general/user-profile.html"
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context.update({
+            "doctor": get_object_or_404(models.Doctor, user=self.request.user)
         })
         return context
 
@@ -43,8 +56,12 @@ class RedirectUserView(base_views.RedirectUserView):
     """
     Users Redirect View, redirect logged in user
     """
-    def get_pattern_name(self):
-        return reverse_lazy("users:profile", kwargs={"username": self.request.user.username})
+    def get_role_and_url(self):
+        return {
+            get_user_model().CUSTOMER: reverse_lazy("users:profile-customer"),
+            get_user_model().DOCTOR: reverse_lazy("users:profile-doctor"),
+            get_user_model().HOSPITAL: reverse_lazy("users:profile-hospital"),
+        }
 
 
 class LogoutView(auth_views.LogoutView):
