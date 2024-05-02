@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, redirect
 
 from . import forms, base_views
 from users import models
-from core.models import Hospital
+from core.models import Hospital, DoctorHospitals
 
 class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
     """
@@ -46,7 +46,7 @@ class HospitalProfileView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         hospital = get_object_or_404(Hospital, user__username=self.kwargs.get("username"))
-        doctors = models.Doctor.objects.filter(hospital=hospital)
+        doctors = DoctorHospitals.objects.filter(hospital=hospital)
         context.update({
             "hospital": hospital,
             "doctors": doctors,
