@@ -26,7 +26,7 @@ class DoctorProfileView(LoginRequiredMixin, generic.TemplateView):
     """
     user profile page
     """
-    template_name = "general/user-profile.html"
+    template_name = "general/doctor_profile.html"
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
@@ -41,7 +41,7 @@ class HospitalProfileView(LoginRequiredMixin, generic.TemplateView):
     """
     user profile page
     """
-    template_name = "general/user-profile.html"
+    template_name = "general/hospital_profile.html"
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
