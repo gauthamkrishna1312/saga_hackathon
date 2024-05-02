@@ -64,4 +64,6 @@ class Customer(models.Model):
 class Doctor(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     qualification = models.CharField(max_length=255)
-    
+    experties = models.CharField(max_length=200)
+    experience = models.IntegerField()
+    bio = models.TextField()
