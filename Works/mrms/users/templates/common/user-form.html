@@ -1,0 +1,11 @@
+{% for field in form %}
+<div class="input-group">
+    <span><i class="fas fa-user" aria-hidden="true"></i></span>
+    {{field}}
+    {% if field.errors %}
+    {% for error in field.errors %}
+    <span class="invalid-feedback {%if error%}d-block{%endif%}">{{error}}</span>
+    {% endfor %}
+    {%endif%}
+</div>
+{% endfor %}
