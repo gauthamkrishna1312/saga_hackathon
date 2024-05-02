@@ -47,6 +47,7 @@ class HospitalProfileView(generic.TemplateView):
         context =  super().get_context_data(**kwargs)
         hospital = get_object_or_404(Hospital, user__username=self.kwargs.get("username"))
         doctors = DoctorHospitals.objects.filter(hospital=hospital)
+        print(doctors)
         context.update({
             "hospital": hospital,
             "doctors": doctors,

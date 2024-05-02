@@ -29,11 +29,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                {% for doctor in doctors %}
+                {% for object in doctors %}
                   <tr>
                     <th scope="row">{{ forloop.counter }}</th>
-                    <td><a href="{% url 'users:profile-doctor' username=doctor.user.username %}">{{ doctor.user.username }}</a></td>
-                    <td>{{ doctor.qualification }}</td>
+                    <td><a href="{% url 'users:profile-doctor' username=object.doctor.user.username %}">{{ object.doctor.user.username }}</a></td>
+                    <td>{{ object.doctor.qualification }}</td>
                   </tr>
                   {% endfor %}
                 </tbody>
