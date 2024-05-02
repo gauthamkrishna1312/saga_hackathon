@@ -6,7 +6,7 @@ general_urlpatterns = [
     path('', views.RedirectUserView.as_view(), name="redirect-user"),
     # profile page
     path('profile/patient/<username>/', views.CustomerProfileView.as_view(), name='profile-customer'),
-    path('profile/patient/create/<id>/', views.CustomerProfileView.as_view(), name='create-customer'),
+    path('profile/patient/create/<id>/', views.CreateCustomerView.as_view(), name='create-customer'),
     path('profile/doctor/<username>/', views.DoctorProfileView.as_view(), name='profile-doctor'),
     path('hospital/<username>/', views.HospitalProfileView.as_view(), name='profile-hospital'),
 
