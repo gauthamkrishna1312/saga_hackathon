@@ -14,7 +14,9 @@ class ProfileView(LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
-        
+        context.update({
+            ""
+        })
 
 
 class LoginView(auth_views.LoginView):
