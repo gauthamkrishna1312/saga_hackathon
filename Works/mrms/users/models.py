@@ -54,7 +54,7 @@ class Customer(models.Model):
     weight = models.IntegerField(null=True, blank=True)
     bloog_group = models.CharField(max_length=10, null=True, blank=True)
     disbled = models.BooleanField(default=False, blank=True)
-    disease = models.CharField(null=True, blank=True)
+    disease = models.CharField(null=True, blank=True, max_length=100)
     bio = models.TextField()
 
     def __str__(self) -> str:
