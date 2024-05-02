@@ -55,8 +55,9 @@ class DoctorHospitals(models.Model):
 
 class Appointment(models.Model):
     # default status pending
-    ACCEPTED = 1
-    DECLINED = 0
+    ACCEPTED = 2
+    DECLINED = 1
+    PENDING = 0
     STATUS_CHOICES = (
         (ACCEPTED, "appointed"),
         (DECLINED, "declined")
@@ -66,7 +67,7 @@ class Appointment(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     time = models.DateTimeField(null=True, blank=True)
-    status = models.IntegerField(choices=STATUS_CHOICES)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=PENDING)
 
     def __str__(self):
         return f"{self.customer.user.username} | {self.doctor.user.username}"
