@@ -25,29 +25,17 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Q</th>
                   </tr>
                 </thead>
                 <tbody>
+                {% for doctor in doctors %}
                   <tr>
-                    <th scope="row">1</th>
-                    <td><a href="./doctor_profile.html">Doctor Name 1</a></td>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url 'users:profile-doctor' username=doctor.user.username %}">{{ doctor.user.username }}</a></td>
+                    <td>{{ doctor.qualification }}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="./doctor_profile.html">Doctor Name 2</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="./doctor_profile.html">Doctor Name 3</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="./doctor_profile.html">Doctor Name 4</a></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td><a href="./doctor_profile.html">Doctor Name 5</a></td>
-                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
               
@@ -118,7 +106,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Faculties</div>
-                    <div class="col-lg-9 col-md-8">50</div>
+                    <div class="col-lg-9 col-md-8">{{ no_of_doctors }}</div>
                   </div>
 
                   
