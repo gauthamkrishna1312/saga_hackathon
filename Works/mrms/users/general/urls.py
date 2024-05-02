@@ -15,7 +15,7 @@ general_urlpatterns = [
     # user registration
     path('register/', views.RegisterView.as_view(), name='signup'),
     # add a role to the registered user
-    path('register/add-example-role', views.AddExampleRole.as_view(), name='add-example-role'),
+    path('register/add-role', views.AddCustomerRole.as_view(), name='add-customer-role'),
     # add the registered user to a group
-    path('register/add-to-example-group/', views.AddToExampleGroup.as_view(), name='add-to-example-group'),
+    path('register/add-group/', views.AddToCustomerGroup.as_view(), name='add-to-customer-group'),
 ]

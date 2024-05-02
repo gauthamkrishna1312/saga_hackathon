@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-urlpatterns = [
+verification_urlpatterns = [
     # email verification
     # methods
     # using a url to verify email

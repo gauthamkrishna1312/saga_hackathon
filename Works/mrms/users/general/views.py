@@ -56,22 +56,24 @@ class RegisterView(generic.CreateView):
     model = get_user_model()
     template_name = "general/user-register.html"
     form_class = forms.UserRegistrationForm
-    success_url = reverse_lazy("users:add-example-role")
+    success_url = reverse_lazy("users:add-customer-role")
 
     def get_success_url(self, *args, **kwargs):
         self.request.session["user_id"] = self.object.id
         return self.success_url
 
 
-class AddExampleRole(base_views.AddRole):
+class AddCustomerRole(base_views.AddRole):
     """
     give users  the specified role
     """
-    role = None
+    role = get_user_model().CUSTOMER
+    success_url = reverse_lazy("users:add-to-customer-group")
 
 
-class AddToExampleGroup(base_views.AddToGroup):
+class AddToCustomerGroup(base_views.AddToGroup):
     """
     add users to the specified group
     """
-    group_name = "example"
+    group_name = "customer"
+    success_url = reverse_lazy("users:login")

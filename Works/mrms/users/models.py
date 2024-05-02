@@ -3,23 +3,27 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.utils import timezone
 import datetime
+import os
+
+def get_profile_path(instance, filename):
+    return os.path.join("profile", instance.username, filename)
 
 
 class User(AbstractUser):
-    # roles
-    # role name = index number
-    # CUSTOMER = 1
-    # STAFF = 2
-    EXAMPLE_ROLE = 1
-    STAFF = 2
+    CUSTOMER = 1
+    DOCTOR = 2
+    HOPITAL = 3
     ROLES = (
-        # (CUSTOMER, "customer")
-        (STAFF, "staff"),
-        (EXAMPLE_ROLE, "example role"),
+        (CUSTOMER, "customer"),
+        (DOCTOR, "doctor"),
+        (HOPITAL, "hospital"),
     )
     
     role = models.PositiveSmallIntegerField(choices=ROLES, null=True, blank=True)
     email_verified = models.BooleanField(default=False, null=True)
+
+    phone = models.CharField(max_length=15, null=True, blank=True)
+    profile_pic = models.ImageField(upload_to=get_profile_path)
 
     def is_email_verified(self):
         return self.email_verified
