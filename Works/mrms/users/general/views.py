@@ -86,6 +86,7 @@ class CreateCustomerView(View):
     def get(self, request, *args, **kwargs):
         user = get_object_or_404(get_user_model(), id=kwargs.get("id"))
         if not models.Customer.objects.filter(user=user).exists():
+            print("Customer already exists")
             customer = models.Customer(user=user)
             customer.save()
         return redirect(reverse_lazy("users:login"))
