@@ -22,7 +22,7 @@ class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
         })
         return context
 
-class DoctorProfileView(LoginRequiredMixin, generic.TemplateView):
+class DoctorProfileView(generic.TemplateView):
     """
     user profile page
     """
@@ -31,13 +31,13 @@ class DoctorProfileView(LoginRequiredMixin, generic.TemplateView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context.update({
-            "doctor": get_object_or_404(models.Doctor, user=self.request.user)
+            "doctor": get_object_or_404(models.Doctor, user__username=self.kwargs.get("username"))
         })
         return context
     
 
 
-class HospitalProfileView(LoginRequiredMixin, generic.TemplateView):
+class HospitalProfileView(generic.TemplateView):
     """
     user profile page
     """
