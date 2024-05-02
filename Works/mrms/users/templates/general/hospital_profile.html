@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% block title %}
+	hospital Profile
+{% endblock %}
+{% block content %}
+<section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="{{ hospital.user.profile_pic.url }}" alt="Profile" class="rounded-circle" style="aspect-ratio: 1/1;">
+              <h2>{{ hospital.user.username }}</h2>
+              <h3>Hospital</h3>
+              <a href="./give_feedback_hospital.html" class="btn btn-outline-primary m-3">Give Feedback</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body profile-card pt-4">
+
+              <h2>Faculties</h2>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="./doctor_profile.html">Doctor Name 1</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="./doctor_profile.html">Doctor Name 2</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="./doctor_profile.html">Doctor Name 3</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="./doctor_profile.html">Doctor Name 4</a></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><a href="./doctor_profile.html">Doctor Name 5</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body profile-card pt-4">
+
+              <h2>Feedback</h2>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Good Hospital</td>
+                  </tr>
+                 
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Good Hospital</td>
+                  </tr>
+                 
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Good Hospital</td>
+                  </tr>
+                 
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Good Hospital</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">About</h5>
+                  <p class="small fst-italic">{{ hospital.description }}</p>
+
+                  <h5 class="card-title">Facilities</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Rooms</div>
+                    <div class="col-lg-9 col-md-8">{{ hospital.rooms }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Wards</div>
+                    <div class="col-lg-9 col-md-8">1000</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Faculties</div>
+                    <div class="col-lg-9 col-md-8">50</div>
+                  </div>
+
+                  
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Emergency contact</div>
+                    <div class="col-lg-9 col-md-8">{{ hospital.user.phone }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">{{ hospital.user.email }}</div>
+                  </div>
+
+                </div>
+
+            
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Labs</h5>
+              <div class="card mb-3 " style="box-shadow: none;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://images.pexels.com/photos/248152/pexels-photo-248152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card with an image on left</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                      <a href="./view_available_tests.html" class="text-primary">view available tests</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Card with an image on left -->
+    <hr>
+              <div class="card mb-3 " style="box-shadow: none;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="https://images.pexels.com/photos/248152/pexels-photo-248152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid rounded-start" alt="...">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Card with an image on left</h5>
+                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                      <a href="./view_available_tests.html" class="text-primary">view available tests</a>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Card with an image on left -->
+    <hr>
+    <div class="card mb-3 " style="box-shadow: none;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="https://images.pexels.com/photos/248152/pexels-photo-248152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Card with an image on left</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="./view_available_tests.html" class="text-primary">view available tests</a>
+            </div>
+          </div>
+        </div>
+      </div><!-- End Card with an image on left -->
+            </div>
+          </div><!-- End Default Card -->
+          <!-- <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Photo</h5>
+              <img src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="card-img" alt="">
+            </div>
+          </div>End Default Card -->
+
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
