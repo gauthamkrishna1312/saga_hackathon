@@ -81,7 +81,7 @@ class RedirectUserView(base_views.RedirectUserView):
         }
     
 
-class CreateCustomerView(LoginRequiredMixin, View):
+class CreateCustomerView(View):
 
     def get(self, request, *args, **kwargs):
         user = get_object_or_404(get_user_model(), id=kwargs.get("id"))
