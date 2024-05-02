@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import View, generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import models
 
@@ -16,8 +17,8 @@ class IndexView(generic.TemplateView):
         return context
     
 
-class AppointmentView(View):
+class AppointmentView(LoginRequiredMixin, View):
     
     def post(self, request, *args, **kwargs):
         doctor = request.POST.get('doctor')
-        appointment = models.Appointment(doctor=doctor, customer=)
+        appointment = models.Appointment(doctor=doctor, customer=request.user)
