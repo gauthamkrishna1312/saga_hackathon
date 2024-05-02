@@ -54,6 +54,7 @@ class DoctorHospitals(models.Model):
 
 
 class Appointment(models.Model):
+    # default status pending
     ACCEPTED = 1
     DECLINED = 0
     STATUS_CHOICES = (

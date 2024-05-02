@@ -32,9 +32,11 @@ class DoctorProfileView(generic.TemplateView):
         context =  super().get_context_data(**kwargs)
         doctor = get_object_or_404(models.Doctor, user__username=self.kwargs.get("username"))
         appointments = Appointment.objects.filter(doctor=doctor)
+        hospitals = DoctorHospitals.objects.filter(doctor=doctor)
         context.update({
             "doctor": doctor,
-            "appointments": appointments
+            "appointments": appointments,
+            "hospitals": hospitals
         })
         return context
     
