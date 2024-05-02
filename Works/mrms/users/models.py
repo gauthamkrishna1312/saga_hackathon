@@ -12,7 +12,7 @@ def get_profile_path(instance, filename):
 class User(AbstractUser):
     CUSTOMER = 1
     DOCTOR = 2
-    HOPITAL = 3
+    HOSPITAL = 3
     ROLES = (
         (CUSTOMER, "customer"),
         (DOCTOR, "doctor"),
