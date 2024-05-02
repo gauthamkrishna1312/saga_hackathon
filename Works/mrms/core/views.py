@@ -7,3 +7,4 @@ from . import models
 class IndexView(View):
 
     def get(self, request, *args, **kwargs):
+        pass

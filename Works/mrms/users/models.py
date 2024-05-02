@@ -16,7 +16,7 @@ class User(AbstractUser):
     ROLES = (
         (CUSTOMER, "customer"),
         (DOCTOR, "doctor"),
-        (HOPITAL, "hospital"),
+        (HOSPITAL, "hospital"),
     )
     
     role = models.PositiveSmallIntegerField(choices=ROLES, null=True, blank=True)
