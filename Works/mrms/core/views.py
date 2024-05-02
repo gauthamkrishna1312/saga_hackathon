@@ -24,7 +24,7 @@ class IndexView(generic.TemplateView):
 class AppointmentView(LoginRequiredMixin, View):
     
     def post(self, request, *args, **kwargs):
-        doctor = request.POST.get('doctor')
+        doctor = get_object_or_404(models.Doctor, id=request.POST.get('doctor'))
         appointment = models.Appointment(doctor=doctor, customer=request.user)
         appointment.save()
         request.session["DOCTOR_EMAIL"] = doctor.user.email

@@ -23,7 +23,7 @@ class User(AbstractUser):
     email_verified = models.BooleanField(default=False, null=True)
 
     phone = models.CharField(max_length=15, null=True, blank=True)
-    profile_pic = models.ImageField(upload_to=get_profile_path, blank=True)
+    profile_pic = models.ImageField(upload_to=get_profile_path, blank=True) # default
     address = models.CharField(max_length=255, null=True, blank=True)
 
     def is_email_verified(self):
