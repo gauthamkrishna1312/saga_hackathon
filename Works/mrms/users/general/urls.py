@@ -7,7 +7,7 @@ general_urlpatterns = [
     # profile page
     path('profile/patient/<username>/', views.CustomerProfileView.as_view(), name='profile-customer'),
     path('profile/doctor/<username>/', views.DoctorProfileView.as_view(), name='profile-doctor'),
-    path('hospital/<username>/', views.HospitalProfileView.as_view(), name='profile-doctor'),
+    path('hospital/<username>/', views.HospitalProfileView.as_view(), name='profile-hospital'),
 
     # user login
     path('login/', views.LoginView.as_view(), name='login'),

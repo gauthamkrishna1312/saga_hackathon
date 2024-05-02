@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 
 from . import forms, base_views
 from users import models
+from core.models import Hospital
 
 class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
     """
@@ -33,6 +34,22 @@ class DoctorProfileView(LoginRequiredMixin, generic.TemplateView):
             "doctor": get_object_or_404(models.Doctor, user=self.request.user)
         })
         return context
+    
+
+
+class HospitalProfileView(LoginRequiredMixin, generic.TemplateView):
+    """
+    user profile page
+    """
+    template_name = "general/user-profile.html"
+
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context.update({
+            "hospital": get_object_or_404(Hospital, user__username=self.kwargs.get("username"))
+        })
+        return context
+
 
 
 class LoginView(auth_views.LoginView):
