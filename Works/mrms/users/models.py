@@ -23,7 +23,8 @@ class User(AbstractUser):
     email_verified = models.BooleanField(default=False, null=True)
 
     phone = models.CharField(max_length=15, null=True, blank=True)
-    profile_pic = models.ImageField(upload_to=get_profile_path)
+    profile_pic = models.ImageField(upload_to=get_profile_path, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
 
     def is_email_verified(self):
         return self.email_verified
@@ -45,3 +46,22 @@ class OTPModel(models.Model):
 
     def __str__(self):
         return f"{self.user.username} | {self.is_expired()}"
+    
+
+class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    height = models.IntegerField(null=True, blank=True)
+    weight = models.IntegerField(null=True, blank=True)
+    bloog_group = models.CharField(max_length=10, null=True, blank=True)
+    disbled = models.BooleanField(default=False, blank=True)
+    disease = models.CharField(null=True, blank=True)
+    bio = models.TextField()
+
+    def __str__(self) -> str:
+        return f"{self.user.username}"
+    
+
+class Doctor(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    qualification = models.CharField(max_length=255)
+    
