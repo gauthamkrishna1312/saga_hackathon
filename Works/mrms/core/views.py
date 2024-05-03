@@ -25,7 +25,8 @@ class AppointmentView(LoginRequiredMixin, View):
     
     def post(self, request, *args, **kwargs):
         doctor = get_object_or_404(models.Doctor, id=request.POST.get('doctor'))
-        appointment = models.Appointment(doctor=doctor, customer=request.user)
+        customer = get_object_or_404(models.Customer, user=request.user)
+        appointment = models.Appointment(doctor=doctor, customer=customer)
         appointment.save()
         request.session["DOCTOR_EMAIL"] = doctor.user.email
         return redirect(reverse_lazy("core:appointment-confirmation-mail"))
