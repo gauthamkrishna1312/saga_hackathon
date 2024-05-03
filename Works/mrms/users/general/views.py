@@ -9,7 +9,7 @@ from . import forms, base_views
 from users import models
 from core.models import Hospital, DoctorHospitals, Appointment
 
-class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
+class CustomerProfileView(generic.TemplateView):
     """
     user profile page
     """
@@ -17,8 +17,11 @@ class CustomerProfileView(LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
+        customer = get_object_or_404(models.Customer, user=self.request.user)
+        appointment = Appointment.objects.filter(customer=customer)
         context.update({
-            "patience": get_object_or_404(models.Customer, user=self.request.user)
+            "patience": customer,
+            "appointments": appointment,
         })
         return context
 
