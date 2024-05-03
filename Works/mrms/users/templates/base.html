@@ -131,17 +131,23 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 {% if user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link " href="/accounts/profile/{{ user.username }}">
+            <a class="nav-link " href="/accounts/profile/patient/{{ user.username }}">
               <i class="bi bi-person"></i>
               <span>Profile</span>
             </a>
           </li><!-- End Profile Page Nav -->
-           <li class="nav-item">
-              <a class="nav-item " href="{% url 'users:logout' %}">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link " href="/">
+              <i class="bi bi-house"></i>
+              <span>Home</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
+        <li class="nav-item">
+            <a class="nav-item " href="{% url 'users:logout' %}">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Sign Out</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
            
           {% else %}
           <li class="nav-item">

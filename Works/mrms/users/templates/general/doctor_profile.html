@@ -15,7 +15,7 @@
             <h2>{{ doctor.user.username }}</h2>
             <h3>{{ doctor.experties }}</h3>
             <form action="{% url 'core:appointment' %}" method="POST">
-              {{ csrf_token }}
+              {% csrf_token %}
                 <input type="hidden" value="{{ doctor.id }}" name="doctor">
                 <button type="submit" class="btn btn-outline-primary m-3">Book Appointment</button>
             </form>
