@@ -29,7 +29,7 @@ class AppointmentView(LoginRequiredMixin, View):
         appointment = models.Appointment(doctor=doctor, customer=customer)
         appointment.save()
         request.session["DOCTOR_EMAIL"] = doctor.user.email
-        return redirect(reverse_lazy("core:appointment-confirmation-mail"))
+        return redirect(reverse_lazy("core:appointment-confirm-mail"))
     
 
 
@@ -39,7 +39,7 @@ class AppointmentSendEmail(SendEmailView):
     email_template_name = "appointment-confirmation-mail.html"
 
     def get_from_email(self):
-        return self.request.user.get_email_field_name
+        return self.request.user.email
     
     def get_to_email(self):
         return self.request.session.pop("DOCTOR_EMAIL")
