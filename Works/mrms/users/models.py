@@ -67,3 +67,6 @@ class Doctor(models.Model):
     experties = models.CharField(max_length=200)
     experience = models.IntegerField()
     bio = models.TextField()
+
+    def __str__(self) -> str:
+        return self.user.username
