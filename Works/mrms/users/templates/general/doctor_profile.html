@@ -14,11 +14,15 @@
             <img src="{{ doctor.user.profile_pic.url }}" style="aspect-ratio:1/1;" alt="Profile" class="rounded-circle">
             <h2>{{ doctor.user.username }}</h2>
             <h3>{{ doctor.experties }}</h3>
+            {% if user.is_authenticated %}
+            {% if user.role != 2 %}
             <form action="{% url 'core:appointment' %}" method="POST">
               {% csrf_token %}
                 <input type="hidden" value="{{ doctor.id }}" name="doctor">
                 <button type="submit" class="btn btn-outline-primary m-3">Book Appointment</button>
             </form>
+            {% endif %}
+            {% endif %}
           </div>
         </div>
         {% if user.is_authenticated %}
