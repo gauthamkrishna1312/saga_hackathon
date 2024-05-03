@@ -21,9 +21,11 @@
             </form>
           </div>
         </div>
+        {% if user.is_authenticated %}
+        {% if user.role == 2 %}
+
         <div class="card">
           <div class="card-body profile-card pt-4">
-
             <h2>Appointments</h2>
             <br>
             <h3>Pending</h3>
@@ -56,7 +58,8 @@
 
           </div>
         </div>
-
+{% endif %}
+{% endif %}
       </div>
 
       <div class="col-xl-8">
